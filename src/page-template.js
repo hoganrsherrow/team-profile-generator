@@ -1,4 +1,17 @@
-module.exports = () => {
+const Employee = require('../lib/Employee.js');
+const Manager = require('../lib/Manager.js');
+const Engineer = require('../lib/Engineer.js');
+const Intern = require('../lib/Intern.js');
+
+// Destructure object based on role property
+function createObject(data) {
+    if(data.role == 'Manager') {
+        const manager = new Manager(data.name, data.id, data.email, data.officeNumber);
+        return manager;
+    }
+}
+
+module.exports = (data) => {
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +29,12 @@ module.exports = () => {
     <header>
         <h1>Team Portfolio</h1>
     </header>
-    <body></body>
-    <footer></footer>
+    <main>
+        <section>${createObject(data).getName()}</section>
+    </main>
+    <footer>
+    
+    </footer>
 
 </body>
 </html>

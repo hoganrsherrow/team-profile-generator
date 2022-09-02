@@ -5,8 +5,8 @@ const {
     writeFile,
     copyFile
 } = require('./src/page-generator.js');
-const { off } = require('process');
-const { triggerAsyncId } = require('async_hooks');
+//const { off } = require('process');
+//const { triggerAsyncId } = require('async_hooks');
 
 const promptUser = () => {
     // Create Array to hold employee objects if one does not exist w/n function
@@ -106,12 +106,12 @@ const promptUser = () => {
                 role
             }) => role == 'Intern'
         },
-        // {
-        //     type: 'confirm',
-        //     name: 'confirmAddEmployee',
-        //     message: "Would you like to add another employee?",
-        //     default: false
-        // }
+        {
+            type: 'confirm',
+            name: 'confirmAddEmployee',
+            message: "Would you like to add another employee?",
+            default: false
+        }
     ])
     // .then(data => {
     //     employeeData.push(data);

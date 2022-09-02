@@ -8,10 +8,12 @@ const {
 //const { off } = require('process');
 //const { triggerAsyncId } = require('async_hooks');
 
+var employeeData = [];
+
 const promptUser = () => {
     // Create Array to hold employee objects if one does not exist w/n function
     // if(!employeeData) {
-    //     employeeData = [];
+    //    var employeeData = [];
     // }
     return inquirer.prompt([{
             type: 'input',
@@ -113,22 +115,23 @@ const promptUser = () => {
             default: false
         }
     ])
-    // .then(data => {
-    //     employeeData.push(data);
-    //     if (data.confirmAddEmployee) {
-    //         return promptUser();
-    //     } else {
-    //         return employeeData;
-    //     }
-    // })
+    .then(data => {
+        employeeData.push(data);
+        if (data.confirmAddEmployee) {
+            return promptUser();
+        } else {
+            console.log(employeeData);
+            return employeeData;
+        }
+    })
 };
 
 // copy CSS file from /src to /dist
 copyFile();
 // Initiate inquirer for the user and copy data
 promptUser()
-    .then(data => {
-         return pageTemplate(data);
+    .then( () => {
+         return pageTemplate(employeeData);
     })
     .then(template => {
         writeFile(template);

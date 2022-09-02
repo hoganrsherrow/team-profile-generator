@@ -8,25 +8,48 @@ function createObject(data) {
     if(data.role == 'Manager') {
         const manager = new Manager(data.name, data.id, data.email, data.officeNumber);
         return manager;
+    } else if(data.role == 'Engineer') {
+        const engineer = new Engineer(data.name, data.id, data.email, data.github);
+        return engineer;
+    } else {
+        const intern = new Intern(data.name, data.id, data.email, data.school);
+        return intern;
+    }
+}
+
+function getThirdItem(object) {
+    if(object.getRole() == 'Manager') {
+        return `Office: ${object.getOfficeNumber()}`;
+    } else if(object.getRole() == 'Engineer') {
+        return `Github: <a href="https://www.github.com/${object.getGithub()}">${object.getGithub()}</a>`;
+    } else {
+        return `School: ${object.getSchool()}`;
     }
 }
 
 // Create card for employee
 function createEmployeeCard(data) {
-    let employee = createObject(data);
+    var employee = createObject(data);
+    console.log(employee);
     return `
 <section class="card">
     <h5 class="card-title">${employee.getName()}</h5>
     <h6 class="card-subtitle">${employee.getRole()}</h6>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">${employee.getId()}</li>
-        <li class="list-group-item"><a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
-        <li class="list-group-item">${employee.getOfficeNumber()}</li>
+        <li class="list-group-item">ID: ${employee.getId()}</li>
+        <li class="list-group-item">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
+        <li class="list-group-item">${getThirdItem(employee)}</li>
     </ul>
-</section>`
+</section>`;
 }
 
 module.exports = (data) => {
+    let cardArray = [];
+    data.forEach(arrayObject => {
+        cardArray.push(createEmployeeCard(arrayObject));
+    });
+    console.log(cardArray);
+    console.log(cardArray[0]);
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -45,10 +68,10 @@ module.exports = (data) => {
         <h1>Team Portfolio</h1>
     </header>
     <main class="d-flex flex-wrap justify-content-center">
-        ${createEmployeeCard(data)}
+        ${cardArray.join("")}
     </main>
     <footer>
-    
+        <p>Created by <a href="https://www.github.com/hoganrsherrow">Hogan</a></p>
     </footer>
 
 </body>

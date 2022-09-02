@@ -123,8 +123,9 @@ const promptUser = () => {
     // })
 };
 
-//copyFile();
-//writeFile(pageTemplate());
+// copy CSS file from /src to /dist
+copyFile();
+// Initiate inquirer for the user and copy data
 promptUser()
     .then(data => {
          return pageTemplate(data);

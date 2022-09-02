@@ -19,11 +19,11 @@ function createObject(data) {
 
 function getThirdItem(object) {
     if(object.getRole() == 'Manager') {
-        return object.getOfficeNumber();
+        return `Office: ${object.getOfficeNumber()}`;
     } else if(object.getRole() == 'Engineer') {
-        return `<a href="https://www.github.com/${object.getGithub()}">${object.getGithub()}</a>`;
+        return `Github: <a href="https://www.github.com/${object.getGithub()}">${object.getGithub()}</a>`;
     } else {
-        return object.getSchool();
+        return `School: ${object.getSchool()}`;
     }
 }
 
@@ -36,8 +36,8 @@ function createEmployeeCard(data) {
     <h5 class="card-title">${employee.getName()}</h5>
     <h6 class="card-subtitle">${employee.getRole()}</h6>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">${employee.getId()}</li>
-        <li class="list-group-item"><a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
+        <li class="list-group-item">ID: ${employee.getId()}</li>
+        <li class="list-group-item">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
         <li class="list-group-item">${getThirdItem(employee)}</li>
     </ul>
 </section>`;
@@ -71,7 +71,7 @@ module.exports = (data) => {
         ${cardArray.join("")}
     </main>
     <footer>
-    
+        <p>Created by <a href="https://www.github.com/hoganrsherrow">Hogan</a></p>
     </footer>
 
 </body>

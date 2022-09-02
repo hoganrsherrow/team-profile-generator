@@ -11,6 +11,21 @@ function createObject(data) {
     }
 }
 
+// Create card for employee
+function createEmployeeCard(data) {
+    let employee = createObject(data);
+    return `
+<section class="card">
+    <h5 class="card-title">${employee.getName()}</h5>
+    <h6 class="card-subtitle">${employee.getRole()}</h6>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">${employee.getId()}</li>
+        <li class="list-group-item"><a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
+        <li class="list-group-item">${employee.getOfficeNumber()}</li>
+    </ul>
+</section>`
+}
+
 module.exports = (data) => {
     return `
 <!DOCTYPE html>
@@ -29,8 +44,8 @@ module.exports = (data) => {
     <header>
         <h1>Team Portfolio</h1>
     </header>
-    <main>
-        <section>${createObject(data).getName()}</section>
+    <main class="d-flex flex-wrap justify-content-center">
+        ${createEmployeeCard(data)}
     </main>
     <footer>
     

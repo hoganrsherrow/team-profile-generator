@@ -8,3 +8,12 @@
 body {
     background-color: burlywood;
 }
+
+/* Card Style Start */
+
+.card {
+    box-shadow: 10px 10px 5px lightblue;
+    width: 15rem;
+}
+
+/* Card End */

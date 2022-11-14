@@ -17,7 +17,7 @@ This profile was developed to automate the process of putting together an html p
 Git clone this application from the main branch, and then run npm install.
 
 ## Usage
-Run ```npm start``` to begin the application. Answer the questions about your engineering team. An HTML file will be generated under the ```dist``` folder.
+Run ```npm start``` to begin the application. Answer the questions about your engineering team, and then an HTML file will be generated under the ```dist``` folder.
 
 ## License
 [https://opensource.org/licenses/MIT](https://opensource.org/licenses/MIT)
